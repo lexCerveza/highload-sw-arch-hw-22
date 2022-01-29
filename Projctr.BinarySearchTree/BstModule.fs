@@ -52,6 +52,4 @@ let search value (tree : Tree<'a>) =
   loop value tree
 
 let create values = 
-  let tree = Empty
-  values |> Seq.iter (fun v -> insert v tree |> ignore)
-  tree
+  values |> Seq.fold (fun state v -> insert v state) Empty
